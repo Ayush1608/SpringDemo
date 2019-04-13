@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+    "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans> <!-- default-init-method="initBean" default-destroy-method="destroyBean">  for default init and destroy if every bean is having method with same name -->
+	<bean id="triangle" class="com.spring.tutorial.Triangle" autowire="byName"> <!--   init-method="initBean" destroy-method="destroyBean"-->
+	</bean>
+
+	<bean id="circle" class="com.spring.tutorial.Circle" autowire="byName"/> 
+
+	<bean id="shape" class="com.spring.tutorial.${shape}" autowire="byName" /> 
+
+	<bean id="pointOne" class="com.spring.tutorial.Point">
+		<property name="a" value="${pointOne.PointA}" ></property>
+		<property name="b" value="${pointOne.PointB}" ></property>
+	</bean>
+
+	<bean id="pointTwo" class="com.spring.tutorial.Point">
+		<property name="a" value="20"></property>
+		<property name="b" value="-20"></property>
+	</bean>
+
+	<bean id="pointThree" class="com.spring.tutorial.Point">
+		<property name="a" value="-20"></property>
+		<property name="b" value="0"></property>
+	</bean>
+	
+	<bean id="center" class="com.spring.tutorial.Point">
+	 	<property name="a" value="${pointCentre.PointA}" ></property>
+		<property name="b" value="${pointCentre.PointB}" ></property>
+	</bean>
+	
+	<!--  <bean class = "com.spring.tutorial.DisplayNameBeanPostProcessor"/>
+	<bean class="com.spring.tutorial.MyBeanFactoryPostProcessor" />-->
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="config.properties"></property>
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+</beans>
